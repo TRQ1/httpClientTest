@@ -10,7 +10,7 @@ import java.util.Base64;
 
 public class UrlConnection {
 
-    public String getUrl(HttpServletRequest request, HttpServletResponse response, String theUrl) throws IOException {
+    public String getUrl(String theUrl) throws IOException {
         StringBuilder content = new StringBuilder();
         final String charSet = "UTF-8";
 
@@ -31,9 +31,6 @@ public class UrlConnection {
             bufferedReader.close();
         } catch (IOException e) {
             System.out.println(e);
-            PrintWriter out = response.getWriter();
-            out.print(e);
-            out.close();
         }
         return content.toString();
     }

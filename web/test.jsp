@@ -7,18 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="utils.UrlConnection" %>
-<%@ page errorPage="error.jsp" %>
-<%
-    UrlConnection urlConnection = new UrlConnection();
-%>
+
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<%
-    String result3 = urlConnection.postUrl(request, response, "http://localhost:8080/test.jsp");
-%>
-<%=result3%>
+Hello urlConnection
 </body>
 </html>

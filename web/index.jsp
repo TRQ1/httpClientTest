@@ -11,11 +11,7 @@
     <title>HttpClient and UrlConnection Test</title>
   </head>
   <body>
-  <a href="urlConnection.jsp?idx=1">UrlConnection Get Test</a><br>
-  <a href="urlConnection.jsp?idx=2">UrlConnection Get Test 5xx IOException</a><br>
-  <a href="urlConnection.jsp?idx=3">UrlConnection Post Test</a><br>
-  <a href="test.jsp">UrlConnection Post Test</a><br>
+  <a href="urlConnection.jsp">UrlConnection Get Test</a><br>
   <a href="httpclient.jsp">HttpClient Get Test</a><br>
-  <a href="posthttpclient.jsp">HttpClient Post Test</a><br>
   </body>
 </html>

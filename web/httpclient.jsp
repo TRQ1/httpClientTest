@@ -14,8 +14,8 @@
 <body>
 <%
     HttpClientUtils httpClient = new HttpClientUtils();
-    String result = httpClient.getContentUrl("http://localhost:8080/?id=1&pg=3");
+    httpClient.getContentUrl(request, "http://localhost:8080/test1.jsp");
 %>
-<%=result%>
+call test1.jsp
 </body>
 </html>

@@ -13,14 +13,25 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class HttpClientUtils {
 
-    public String getContentUrl(String url) throws IOException {
 
-        HttpClient client = HttpClientBuilder.create().build();
+    public String getContentUrl(HttpServletRequest request, String url) throws IOException {
+
+        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
+        cm.setMaxTotal(300);
+        cm.setDefaultMaxPerRoute(50);
+        CloseableHttpClient client = HttpClients.custom().setConnectionManager(cm).build();
+
         HttpGet get = new HttpGet(url);
         HttpResponse response = client.execute(get);
 
@@ -55,7 +66,11 @@ public class HttpClientUtils {
 
     public String postContentUrl(String url) throws IOException {
 
-        HttpClient client = HttpClientBuilder.create().build();
+        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
+        cm.setMaxTotal(300);
+        cm.setDefaultMaxPerRoute(50);
+        CloseableHttpClient client = HttpClients.custom().setConnectionManager(cm).build();
+
         HttpPost post = new HttpPost(url);
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
@@ -92,11 +107,6 @@ public class HttpClientUtils {
             post.releaseConnection();
         }
         return "";
-    }
-
-    public void httpBasicAuth() {
-
-
     }
 
 }
